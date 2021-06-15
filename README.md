@@ -4,7 +4,7 @@
 
 ### A minimalistic expense tracker app to track all your income & expenses without any hassle.
 
-### :heavy_exclamation_mark: In case of an error message &rArr; expensify.apps.modernapps.site refused to connect
+### :heavy_exclamation_mark: In case of an error message &rArr; expensify-flow.herokuapp.com refused to connect
 ### Put ```https://``` in front of the URL, Like [https://expensify-flow.herokuapp.com/](https://expensify-flow.herokuapp.com/)
 
 > If you'd like to start tracking your expenses, you can register an account with just an email address 
