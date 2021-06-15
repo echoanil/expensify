@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock %} | Expensify</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="progressBar"></div>
+    <div id="progressBarContainer"></div>
+    <section class="hero is-fullheight">
+      <!-- Hero head: will stick at the top -->
+      <div class="hero-head">
+        <header class="navbar">
+          <div class="container">
+            <div class="navbar-brand">
+              <a class="navbar-item">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon icon-tabler icon-tabler-chart-pie"
+                  width="60"
+                  height="60"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="#ffffff"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path
+                    d="M10 3.2a9 9 0 1 0 10.8 10.8a1 1 0 0 0 -1 -1h-6.8a2 2 0 0 1 -2 -2v-7a0.9 .9 0 0 0 -1 -.8"
+                  />
+                  <path
+                    d="M15 3.5a9 9 0 0 1 5.5 5.5h-4.5a1 1 0 0 1 -1 -1v-4.5"
+                  />
+                </svg>
+                <h1 class="is-size-4 has-text-white-bis">
+                  <a href="{{ url_for('home') }}">Expensify</a>
+                </h1>
+              </a>
+              <span class="navbar-burger" data-target="navbarMenuHeroC">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </div>
+            {% block head %} {% endblock head %}
+          </div>
+        </header>
+      </div>
+      {% block content %} {% endblock %}
+      <!-- Hero footer: will stick at the bottom -->
+      <div class="hero-foot">
+        <div class="container has-text-centered">
+          <p class="has-text-white-bis">Made with ❤️ by Anil Kaundal</p>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script>
+    $(document).ready(function () {
+      // Check for click events on the navbar burger icon
+      $(".navbar-burger").click(function () {
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        $(".navbar-burger").toggleClass("is-active");
+        $(".navbar-menu").toggleClass("is-active");
+      });
+    });
+
+    const progressBar = document.querySelector("#progressBar");
+    let totalPageHeight = document.body.scrollHeight - window.innerHeight;
+    window.onscroll = () => {
+      let newProgressHeight = (window.pageYOffset / totalPageHeight) * 100;
+      progressBar.style.height = `${newProgressHeight}%`;
+      progressBar.style.opacity = `${newProgressHeight}%`;
+    };
+  </script>
+</html>

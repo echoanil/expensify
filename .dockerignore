@@ -1,0 +1,6 @@
+*.db
+env
+venv*
+.git
+README.md
+.gitignore

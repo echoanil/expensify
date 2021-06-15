@@ -1,0 +1,62 @@
+{% extends "template.html" %} {% block title %} Sign-Up {% endblock %} {% block
+content %}
+<div class="box container has-text-centered">
+  {% if message %}
+  <div class="notification is-danger is-light">
+    <button class="delete"></button>
+    {{message}}
+  </div>
+  {% endif %}
+  <form action="" method="POST">
+    <h2 class="title">Sign-Up</h2>
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control">
+        <input
+          class="input is-danger"
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          required
+        />
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Password</label>
+      <div class="control">
+        <input
+          class="input is-danger"
+          type="password"
+          name="password"
+          placeholder="At least 8 characters"
+          required
+        />
+      </div>
+    </div>
+    <p class="has-text-justified content is-small">
+      By signing up, you agree to our Terms of Service and Privacy Policy.
+    </p>
+    <button class="button has-background-danger-dark has-text-white-bis">
+      Create Account
+    </button>
+  </form>
+  <hr />
+  <p>Already have an account?</p>
+  <a class="button is-ghost" href="{{ url_for('login') }}">
+    <span class="has-text-weight-medium">Sign-In »</span>
+  </a>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    (document.querySelectorAll(".notification .delete") || []).forEach(
+      ($delete) => {
+        const $notification = $delete.parentNode;
+
+        $delete.addEventListener("click", () => {
+          $notification.parentNode.removeChild($notification);
+        });
+      }
+    );
+  });
+</script>
+{% endblock %}

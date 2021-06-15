@@ -1,0 +1,215 @@
+{% extends "template.html" %} {% block title %} Stats {% endblock %} {% block
+head %}
+<div id="navbarMenuHeroC" class="navbar-menu">
+  <div class="navbar-end">
+    <span class="navbar-item">
+      <a class="button has-text-danger-dark" href="{{ url_for('logout') }}">
+        <span class="icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-logout"
+            width="60"
+            height="60"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#ff2825"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"
+            />
+            <path d="M7 12h14l-3 -3m0 6l3 -3" />
+          </svg>
+        </span>
+        <span class="has-text-weight-medium">Sign Out</span>
+      </a>
+    </span>
+  </div>
+</div>
+{% endblock %} {% block content %}
+<div class="container has-text-centered">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+  <div class="box">
+    <canvas id="myChart1"></canvas>
+    <canvas id="myChart2"> </canvas>
+    <style>
+      canvas #myChart1 #myChart2 {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </div>
+  <script>
+    var d = new Date();
+    var y = d.getFullYear();
+    let myChart1 = document.getElementById("myChart1").getContext("2d");
+    let myChart2 = document.getElementById("myChart2").getContext("2d");
+
+    // Global Options
+    Chart.defaults.global.defaultFontFamily = "Work Sans";
+    Chart.defaults.global.defaultFontSize = 15;
+    Chart.defaults.global.defaultFontColor = "#ff2a00";
+
+    let incomeChart = new Chart(myChart1, {
+      type: "doughnut",
+      data: {
+        labels: [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ],
+        datasets: [
+          {
+            label: "Income",
+            data: {{income|safe}},
+            //backgroundColor:'green',
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.6)",
+              "rgba(54, 162, 235, 0.6)",
+              "rgba(255, 206, 86, 0.6)",
+              "rgba(75, 192, 192, 0.6)",
+              "rgba(153, 102, 255, 0.6)",
+              "rgba(255, 159, 64, 0.6)",
+              "rgba(255, 99, 132, 0.6)",
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(255, 206, 86, 0.2)",
+              "rgba(75, 192, 192, 0.2)",
+              "rgba(153, 102, 255, 0.2)",
+            ],
+            borderWidth: 0,
+            hoverBorderWidth: 1,
+            hoverBorderColor: "#000",
+          },
+        ],
+      },
+      options: {
+        title: {
+          display: true,
+          text: "Income (" + y + ")",
+          fontSize: 30,
+        },
+        legend: {
+          display: true,
+          position: "bottom",
+          labels: {
+            fontColor: "#000",
+          },
+        },
+        layout: {
+          padding: {
+            left: 0,
+            right: 0,
+            bottom: 0,
+            top: 0,
+          },
+        },
+        tooltips: {
+          enabled: true,
+        },
+      },
+    });
+
+    let expenseChart = new Chart(myChart2, {
+      type: "doughnut",
+      data: {
+        labels: [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ],
+        datasets: [
+          {
+            label: "Expense",
+            data: {{expense|safe}},
+            //backgroundColor:'green',
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.6)",
+              "rgba(54, 162, 235, 0.6)",
+              "rgba(255, 206, 86, 0.6)",
+              "rgba(75, 192, 192, 0.6)",
+              "rgba(153, 102, 255, 0.6)",
+              "rgba(255, 159, 64, 0.6)",
+              "rgba(255, 99, 132, 0.6)",
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(255, 206, 86, 0.2)",
+              "rgba(75, 192, 192, 0.2)",
+              "rgba(153, 102, 255, 0.2)",
+            ],
+            borderWidth: 0,
+            hoverBorderWidth: 1,
+            hoverBorderColor: "#000",
+          },
+        ],
+      },
+      options: {
+        title: {
+          display: true,
+          text: "Expense (" + y + ")",
+          fontSize: 30,
+        },
+        legend: {
+          display: true,
+          position: "bottom",
+          labels: {
+            fontColor: "#000",
+          },
+        },
+        layout: {
+          padding: {
+            left: 0,
+            right: 0,
+            bottom: 0,
+            top: 0,
+          },
+        },
+        tooltips: {
+          enabled: true,
+        },
+      },
+    });
+  </script>
+  <a class="button has-text-danger-dark" href="{{ url_for('recent') }}">
+    <span class="icon">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon icon-tabler icon-tabler-arrow-back"
+        width="60"
+        height="60"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="#ff2825"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M9 11l-4 4l4 4m-4 -4h11a4 4 0 0 0 0 -8h-1" />
+      </svg>
+    </span>
+    <span class="has-text-weight-medium">Go Back</span>
+  </a>
+</div>
+{% endblock %}

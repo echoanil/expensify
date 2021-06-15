@@ -1,0 +1,322 @@
+{% extends "template.html" %} {% block title %} Dashboard {% endblock %} {%
+block head %}
+<div id="navbarMenuHeroC" class="navbar-menu">
+  <div class="navbar-end">
+    <span class="navbar-item">
+      <a class="button has-text-danger-dark" href="{{ url_for('logout') }}">
+        <span class="icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-logout"
+            width="60"
+            height="60"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#ff2825"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"
+            />
+            <path d="M7 12h14l-3 -3m0 6l3 -3" />
+          </svg>
+        </span>
+        <span class="has-text-weight-medium">Sign Out</span>
+      </a>
+    </span>
+  </div>
+</div>
+{% endblock head %} {% block content %}
+<div class="container has-text-centered">
+  <p>
+    <a class="button has-text-danger-dark modal-button" data-target="#modal"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon icon-tabler icon-tabler-plus"
+        width="60"
+        height="60"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="#ff2825"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <line x1="12" y1="5" x2="12" y2="19" />
+        <line x1="5" y1="12" x2="19" y2="12" /></svg
+    ></a>
+  </p>
+  <div id="modal" class="modal">
+    <div class="modal-background"></div>
+    <form class="modal-card" action="" method="POST">
+      <div class="box">
+        <input
+          class="input is-danger"
+          type="text"
+          placeholder="Title"
+          name="title"
+          required
+        />
+        <br />
+        <br />
+        <input
+          class="input is-danger"
+          type="number"
+          min="1" step="any"
+          placeholder="Amount"
+          name="amount"
+          required
+        />
+        <br />
+        <br />
+        <input
+          type="text"
+          id="date"
+          class="input is-danger has-text-black-bis"
+          placeholder="MM/DD/YYYY"
+          name="date"
+          required
+        />
+        <br />
+        <br />
+        <input class="input is-danger" type="text" placeholder="Note" name="note" />
+        <br />
+        <br />
+        <div class="select is-danger">
+          <select name="ttype">
+            <option>Transaction Type</option>
+            <option>Income</option>
+            <option>Expense</option>
+          </select>
+        </div>
+        <br />
+        <br />
+        <div class="select is-danger">
+          <select name="tag">
+            <option>Tag</option>
+            <option>Food</option>
+            <option>Housing</option>
+            <option>Utilities</option>
+            <option>Insurance</option>
+            <option>Healthcare</option>
+            <option>Entertainment</option>
+            <option>Miscellaneous</option>
+            <option>Saving & Debts</option>
+            <option>Transportation</option>
+            <option>Personal Spending</option>
+          </select>
+        </div>
+      </div>
+      <button
+        class="button is-danger has-background-danger-dark has-text-white-bis"
+        >Save Changes</a
+      >
+    </form>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+  <div class="column">
+    <article class="message">
+      <div class="message-header has-background-danger-dark">
+        <p>TOTAL BALANCE</p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-wallet"
+          width="60"
+          height="60"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#ffffff"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path
+            d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12"
+          />
+          <path d="M20 12v4h-4a2 2 0 0 1 0 -4h4" />
+        </svg>
+      </div>
+      <div class="message-body is-size-4 has-text-black-bis">&#x20b9;{{balance}}
+      </div>
+    </article>
+    <div class="columns is-mobile">
+      <div class="column">
+        <article class="message">
+          <div class="message-header has-background-danger-dark">
+            <p>TOTAL INCOME</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-arrow-big-top"
+              width="60"
+              height="60"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#ffffff"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M9 20v-8h-3.586a1 1 0 0 1 -.707 -1.707l6.586 -6.586a1 1 0 0 1 1.414 0l6.586 6.586a1 1 0 0 1 -.707 1.707h-3.586v8a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"
+              />
+            </svg>
+          </div>
+          <div class="message-body is-size-4 has-text-black-bis">
+            &#x20b9;{{income}}
+          </div>
+        </article>
+      </div>
+      <div class="column">
+        <article class="message">
+          <div class="message-header has-background-danger-dark">
+            <p>TOTAL EXPENSE</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-arrow-big-down"
+              width="60"
+              height="60"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#ffffff"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M15 4v8h3.586a1 1 0 0 1 .707 1.707l-6.586 6.586a1 1 0 0 1 -1.414 0l-6.586 -6.586a1 1 0 0 1 .707 -1.707h3.586v-8a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1z"
+              />
+            </svg>
+          </div>
+          <div class="message-body is-size-4 has-text-black-bis">
+            &#x20b9;{{expense}}
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+  <a class="button has-text-danger-dark" href="{{ url_for('recent') }}">
+    <span class="icon">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon icon-tabler icon-tabler-receipt"
+        width="60"
+        height="60"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="#ff2825"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2m4 -14h6m-6 4h6m-2 4h2"
+        />
+      </svg>
+    </span>
+    <span class="has-text-weight-medium">Recent Transactions</span>
+  </a>
+  <br />
+  <br />
+  <a class="button has-text-danger-dark" href="{{ url_for('rule') }}">
+    <span class="icon">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon icon-tabler icon-tabler-info-square"
+        width="60"
+        height="60"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="#ff2825"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <line x1="12" y1="8" x2="12.01" y2="8" />
+        <rect x="4" y="4" width="16" height="16" rx="2" />
+        <polyline points="11 12 12 12 12 16 13 16" />
+      </svg>
+    </span>
+    <span class="has-text-weight-medium">50-30-20 Rule</span>
+  </a>
+</div>
+<script>
+  $(".modal-button").click(function () {
+    var target = $(this).data("target");
+    $("html").addClass("is-clipped");
+    $(target).addClass("is-active");
+  });
+
+  $(".modal-close").click(function () {
+    $("html").removeClass("is-clipped");
+    $(this).parent().removeClass("is-active");
+  });
+
+  var date = document.getElementById("date");
+
+  function checkValue(str, max) {
+    if (str.charAt(0) !== "0" || str == "00") {
+      var num = parseInt(str);
+      if (isNaN(num) || num <= 0 || num > max) num = 1;
+      str =
+        num > parseInt(max.toString().charAt(0)) && num.toString().length == 1
+          ? "0" + num
+          : num.toString();
+    }
+    return str;
+  }
+
+  date.addEventListener("input", function (e) {
+    this.type = "text";
+    var input = this.value;
+    if (/\D\/$/.test(input)) input = input.substr(0, input.length - 3);
+    var values = input.split("/").map(function (v) {
+      return v.replace(/\D/g, "");
+    });
+    if (values[0]) values[0] = checkValue(values[0], 12);
+    if (values[1]) values[1] = checkValue(values[1], 31);
+    var output = values.map(function (v, i) {
+      return v.length == 2 && i < 2 ? v + " / " : v;
+    });
+    this.value = output.join("").substr(0, 14);
+  });
+
+  date.addEventListener("blur", function (e) {
+    this.type = "text";
+    var input = this.value;
+    var values = input.split("/").map(function (v, i) {
+      return v.replace(/\D/g, "");
+    });
+    var output = "";
+
+    if (values.length == 3) {
+      var year =
+        values[2].length !== 4
+          ? parseInt(values[2]) + 2000
+          : parseInt(values[2]);
+      var month = parseInt(values[0]) - 1;
+      var day = parseInt(values[1]);
+      var d = new Date(year, month, day);
+      if (!isNaN(d)) {
+        document.getElementById("result").innerText = d.toString();
+        var dates = [d.getMonth() + 1, d.getDate(), d.getFullYear()];
+        output = dates
+          .map(function (v) {
+            v = v.toString();
+            return v.length == 1 ? "0" + v : v;
+          })
+          .join(" / ");
+      }
+    }
+    this.value = output;
+  });
+</script>
+{% endblock %}

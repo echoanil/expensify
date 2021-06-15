@@ -1,0 +1,108 @@
+{% extends "template.html" %} {% block title %} 50-30-20 Rule {% endblock %} {%
+block head %}
+<div id="navbarMenuHeroC" class="navbar-menu">
+  <div class="navbar-end">
+    <span class="navbar-item">
+      <a class="button has-text-danger-dark" href="{{ url_for('logout') }}">
+        <span class="icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-logout"
+            width="60"
+            height="60"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#ff2825"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"
+            />
+            <path d="M7 12h14l-3 -3m0 6l3 -3" />
+          </svg>
+        </span>
+        <span class="has-text-weight-medium">Sign Out</span>
+      </a>
+    </span>
+  </div>
+</div>
+{% endblock %} {% block content %}
+<div class="hero-body">
+  <div class="container has-text-justified">
+    <h2 class="title has-text-white-bis brand">50-30-20 Rule</h2>
+    <br />
+    <p class="subtitle has-text-white-bis">
+      Budgeting is an integral a part of financing. But it’s often seen as time
+      consuming, boring and sophisticated . But surprisingly the simplest
+      budgeting tips are often the foremost simple. a bit like during this case.
+      Originating from the 2005 book, “All your Worth: the last word Lifetime
+      Money Plan” written by Elizabeth Warren, the 50-30-20 rule may be a smart
+      and easy monthly budgeting method that tells you exactly what proportion
+      money to pour into your savings, needs and needs monthly . With a
+      transparent big-picture overview of your allow the month, you'll
+      confidently avoid overspending and consistently build up your savings. The
+      rule is to divide your monthly after-tax income into three categories. 50%
+      for needs, 30% for wants and 20% for savings and investment.
+    </p>
+
+    <h2 class="subtitle has-text-white-bis is-size-4">50% for Needs</h2>
+    <p class="subtitle has-text-white-bis">
+      50% of your after-tax income should cover your needs, which are expenses
+      that you simply can’t avoid. It includes - Rent, Groceries, Utilities
+      Education, Insurances, Loan repayments or EMIs etc. If your needs
+      overshoot the allotted budget then, for a healthier financial life, the
+      author suggests trying to find cheaper alternatives which can include
+      shifting to a less expensive apartment or trying to find another vegetable
+      vendor.
+    </p>
+
+    <h2 class="subtitle has-text-white-bis is-size-4">30% for Wants</h2>
+    <p class="subtitle has-text-white-bis">
+      30% of your after-tax income should be wont to cover your wants. Wants are
+      non-essential expenses, things that you simply prefer to spend on although
+      you'll live without them. It includes - Shopping, Vacations, Vacations,
+      Entertainment subscriptions, Groceries (other than essentials) and Dining
+      out etc. If you've got been unconscious of your money within the past then
+      you'll end up spending an excessive amount of on your wants and
+      overshooting your set budget. otherwise you might end up confused between
+      a want and a requirement , at that stage ask yourself, “could I live
+      without this” if the solution is yes then that’s a want not a requirement.
+    </p>
+
+    <h2 class="subtitle has-text-white-bis is-size-4">20% for Savings</h2>
+    <p class="subtitle has-text-white-bis">
+      With 50% of your monthly after-tax income going towards your needs and 30%
+      allocated to your wants, the remaining 20% must be saved then utilized
+      through investments. This includes adding money to an emergency fund
+      during a checking account , investing in mutual funds or stock exchange .
+      You should have a minimum of 3 to six months of your monthly salary in
+      your emergency fund just in case you lose your job or an unforeseen event
+      occurs. then , specialise in retirement and meeting other financial goals
+      down the road.
+    </p>
+    <a class="button has-text-danger-dark" href="{{ url_for('dashboard') }}">
+      <span class="icon">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-arrow-back"
+          width="60"
+          height="60"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#ff2825"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M9 11l-4 4l4 4m-4 -4h11a4 4 0 0 0 0 -8h-1" />
+        </svg>
+      </span>
+      <span class="has-text-weight-medium">Go Back</span>
+    </a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,203 @@
+{% extends "template.html" %} {% block title %} Recent Transactions {% endblock
+%} {% block head %}
+<div id="navbarMenuHeroC" class="navbar-menu">
+  <div class="navbar-end">
+    <span class="navbar-item">
+      <a class="button has-text-danger-dark" href="{{ url_for('logout') }}">
+        <span class="icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-logout"
+            width="60"
+            height="60"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#ff2825"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"
+            />
+            <path d="M7 12h14l-3 -3m0 6l3 -3" />
+          </svg>
+        </span>
+        <span class="has-text-weight-medium">Sign Out</span>
+      </a>
+    </span>
+  </div>
+</div>
+{% endblock %} {% block content %}
+<div class="container has-text-centered">
+  {% if not user.expenses %}
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <lottie-player
+    src="https://assets8.lottiefiles.com/private_files/lf30_oqpbtola.json"
+    background="transparent"
+    speed="1"
+    style="width: 300px; height: 300px"
+    loop
+    autoplay
+  ></lottie-player>
+  {% else %} {% for expense in user.expenses %}
+  <div
+    class="notification {{'has-text-danger' if expense.ttype=='Expense' else 'has-text-success-dark'}}"
+  >
+    <button
+      class="delete is-small"
+      onClick="deleteExpense({{expense.id}})"
+    ></button>
+    <span class="icon">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon icon-tabler icon-tabler-home"
+        width="60"
+        height="60"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="{{'#ff2825' if expense.ttype=='Expense' else '#50896f'}}"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        {% if expense.tag == "Housing" %}
+        <polyline points="5 12 3 12 12 3 21 12 19 12" />
+        <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+        <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+        {% elif expense.tag == "Transportation" %}
+        <circle cx="7" cy="17" r="2" />
+        <circle cx="17" cy="17" r="2" />
+        <path
+          d="M5 17h-2v-11a1 1 0 0 1 1 -1h9v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5"
+        />
+        {% elif expense.tag == "Tag" %}
+        <circle cx="7" cy="17" r="2" />
+        <circle cx="17" cy="17" r="2" />
+        <path
+          d="M5 17h-2v-11a1 1 0 0 1 1 -1h9v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5"
+        />
+        {% elif expense.tag == "Food" %}
+        <path
+          d="M19 3v12h-5c-.023 -3.681 .184 -7.406 5 -12zm0 12v6h-1v-3m-10 -14v17m-3 -17v3a3 3 0 1 0 6 0v-3"
+        />
+        {% elif expense.tag == "Utilities" %}
+        <circle cx="7" cy="17" r="2" />
+        <circle cx="17" cy="17" r="2" />
+        <path
+          d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5"
+        />
+        {% elif expense.tag == "Insurance" %}
+        <line x1="9" y1="14" x2="15" y2="8" />
+        <circle cx="9.5" cy="8.5" r=".5" fill="currentColor" />
+        <circle cx="14.5" cy="13.5" r=".5" fill="currentColor" />
+        <path
+          d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2"
+        />
+        {% elif expense.tag == "Healthcare" %}
+        <path
+          d="M6 4h-1a2 2 0 0 0 -2 2v3.5h0a5.5 5.5 0 0 0 11 0v-3.5a2 2 0 0 0 -2 -2h-1"
+        />
+        <path d="M8 15a6 6 0 1 0 12 0v-3" />
+        <path d="M11 3v2" />
+        <path d="M6 3v2" />
+        <circle cx="20" cy="10" r="2" />
+        {% elif expense.tag == "Entertainment" %}
+        <rect x="2" y="6" width="20" height="12" rx="2" />
+        <path d="M6 12h4m-2 -2v4" />
+        <line x1="15" y1="11" x2="15" y2="11.01" />
+        <line x1="18" y1="13" x2="18" y2="13.01" />
+        {% elif expense.tag == "Miscellaneous" %}
+        <path
+          d="M21 8c-4 0 -7 2 -7 5a3 3 0 0 0 6 0c0 -3 -2.5 -5 -8 -5s-8 2 -8 5a3 3 0 0 0 6 0c0 -3 -3 -5 -7 -5"
+        />
+        {% elif expense.tag == "Saving & Debts" %}
+        <rect x="7" y="9" width="14" height="10" rx="2" />
+        <circle cx="14" cy="14" r="2" />
+        <path
+          d="M17 9v-2a2 2 0 0 0 -2 -2h-10a2 2 0 0 0 -2 2v6a2 2 0 0 0 2 2h2"
+        />
+        {% elif expense.tag == "Personal Spending" %}
+        <circle cx="12" cy="7" r="4" />
+        <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+        {% endif %}
+      </svg>
+    </span>
+    <p>{{expense.title}} &#10233; &#8377;{{expense.amount}}</p>
+    <p>{{expense.date.date()}}</p>
+  </div>
+  {% endfor %} {% endif %}
+  <a class="button has-text-danger-dark" href="{{ url_for('stats') }}">
+    <span class="icon">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon icon-tabler icon-tabler-calendar-stats"
+        width="44"
+        height="44"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="#ff2825"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4"
+        />
+        <path d="M18 14v4h4" />
+        <circle cx="18" cy="18" r="4" />
+        <path d="M15 3v4" />
+        <path d="M7 3v4" />
+        <path d="M3 11h16" />
+      </svg>
+    </span>
+    <span class="has-text-weight-medium">Stats</span>
+  </a>
+  <a class="button has-text-danger-dark" href="{{ url_for('dashboard') }}">
+    <span class="icon">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="icon icon-tabler icon-tabler-arrow-back"
+        width="60"
+        height="60"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="#ff2825"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M9 11l-4 4l4 4m-4 -4h11a4 4 0 0 0 0 -8h-1" />
+      </svg>
+    </span>
+    <span class="has-text-weight-medium">Go Back</span>
+  </a>
+  <br />
+  <br />
+</div>
+<script>
+  // document.addEventListener("DOMContentLoaded", () => {
+  //   (document.querySelectorAll(".notification .delete") || []).forEach(
+  //     ($delete) => {
+  //       const $notification = $delete.parentNode;
+
+  //       $delete.addEventListener("click", () => {
+  //         $notification.parentNode.removeChild($notification);
+  //       });
+  //     }
+  //   );
+  // });
+  function deleteExpense(expenseId) {
+    fetch("/delete_expense", {
+      method: "POST",
+      body: JSON.stringify({ expenseId: expenseId }),
+    }).then((_res) => {
+      window.location.href = "/recent_transactions";
+    });
+  }
+</script>
+{% endblock %}

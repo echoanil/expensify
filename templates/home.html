@@ -1,0 +1,52 @@
+{% extends "template.html" %} {% block title %} Home {% endblock %} {% block
+head %}
+<div id="navbarMenuHeroC" class="navbar-menu">
+  <div class="navbar-end">
+    <span class="navbar-item">
+      <a class="button has-text-danger-dark" href="{{ url_for('login') }}">
+        <span class="icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-login"
+            width="60"
+            height="60"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#ff2825"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"
+            />
+            <path d="M20 12h-13l3 -3m0 6l-3 -3" />
+          </svg>
+        </span>
+        <span class="has-text-weight-medium">Sign In</span>
+      </a>
+    </span>
+  </div>
+</div>
+{% endblock head %} {% block content %}
+<!-- Hero content: will be in the middle -->
+<div class="hero-body">
+  <div class="lines">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+  <div class="container has-text-centered">
+    <h2 class="title has-text-white-bis brand">Expensify</h2>
+    <p class="subtitle has-text-white-bis has-text-centered">
+      A web application that helps to keep track of user’s spending habits. The
+      users have to key in their spending details which include: date, amount,
+      spending category, description of the spending. All these details will
+      form as one record. Then users will be able to visualize their spending
+      details on the graph. Users are able to set a budget that they want to
+      monitor for their spending.
+    </p>
+  </div>
+</div>
+{% endblock %}
