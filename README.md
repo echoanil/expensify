@@ -1,24 +1,20 @@
+# Expensify 📈
+
+### A streamlined expense tracking application crafted to effortlessly manage your income and expenditures.
+
 ![Preview](https://bit.ly/3o2zl6v)
 
-# Expensify [Personal Expense Tracker] :chart_with_upwards_trend:
+> To start tracking your expenses, sign up with your email and a secure password. For a trial, use these login credentials: Email: `test@gmail.com` & Password: `12345`.
 
-### A minimalistic expense tracker app to track all your income & expenses without any hassle.
+## Built With 🛠️
+* **Bulma**: Modern CSS framework 💅
+* **Flask**: Python-based micro web framework 🐍
+* **Flask-Login**: Facilitates user session management for Flask 🔐
+* **Flask-SQLAlchemy** 🗄️
+* **Remote MySQL**: Free MySQL database 🗃️
+* **Chart.js**: JavaScript library for data visualization 📊
+* **Cloud Foundry**: Offers highly efficient cloud-native application delivery on Kubernetes ☁️
+* **Tanzu Application Service**: Modern platform for seamless microservices deployment and operation across clouds 🚀
+* **Docker**: Tool for simplifying application creation, deployment, and operation using containers 🐳
 
-### :heavy_exclamation_mark: In case of an error message &rArr; expensify-flow.herokuapp.com refused to connect
-### Put ```https://``` in front of the URL, Like [https://expensify-flow.herokuapp.com/](https://expensify-flow.herokuapp.com/)
-
-> If you'd like to start tracking your expenses, you can register an account with just an email address 
-and password. To take it for a test run, try these login credentials: Email: ```test@gmail.com``` & Password: ```12345```
-
-## Built With
-* Bulma: (the modern CSS framework)
-* Flask (a micro web framework written in Python)
-* Flask-Login (user session management for Flask)
-* Flask-SQLAlchemy
-* Remote MySQL (a free MySQL database)
-* Chart.js (a JavaScript library for data visualization)
-* Cloud Foundry (provides a highly efficient, modern model for cloud native application delivery on top of Kubernetes)
-* Tanzu Application Service (a modern application platform to continuously deliver and run microservices across clouds)
-* Docker (a tool to make it easier to create, deploy, and run applications by using containers)
-
-### ▷ Project Demo Video [Click Here:link:](https://youtu.be/_dZ6PMOmQ1s)
+### 📺 Project Demo Video [Click Here](https://youtu.be/_dZ6PMOmQ1s) 🔗
