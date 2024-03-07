@@ -2,7 +2,7 @@
 
 ### A streamlined expense tracking application crafted to effortlessly manage your income and expenditures.
 
-![Preview](https://bit.ly/3o2zl6v)
+![Preview](https://raw.githubusercontent.com/echoanil/expensify/refs/heads/main/images/expensify-preview.png)
 
 > To start tracking your expenses, sign up with your email and a secure password. For a trial, use these login credentials: Email: `test@gmail.com` & Password: `12345`.
 
